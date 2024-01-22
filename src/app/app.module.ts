@@ -11,6 +11,7 @@ import { AddEmployeeComponent } from './components/add-employee/add-employee.com
 import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
 import { HomeComponent } from './components/home/home.component';
 import { FilterpipePipe } from './filterpipe.pipe';
+import { AboutPageComponent } from './components/about-page/about-page.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FilterpipePipe } from './filterpipe.pipe';
     UpdateEmployeeComponent,
     HomeComponent,
     FilterpipePipe,
+    AboutPageComponent,
   ],
   
   imports: [

@@ -27,6 +27,6 @@ export class AddEmployeeComponent implements OnInit {
     this.service.addEmployee(this.data).subscribe(data => {
       console.log(data)
     })
-    this.router.navigate(['/']);
+    this.router.navigate(['/employees']);
   }
 }

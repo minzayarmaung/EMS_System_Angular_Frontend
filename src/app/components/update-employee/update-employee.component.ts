@@ -39,7 +39,7 @@ export class UpdateEmployeeComponent implements OnInit {
       console.log(data)
     })
 
-    this.router.navigate(['/']);
+    this.router.navigate(['/employees']);
   }
 
 }
