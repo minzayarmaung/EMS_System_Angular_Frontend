@@ -35,7 +35,12 @@ employees: any[] | undefined
   }
 
   updateEmployee(id: number){
-    this.router.navigate(['update', id]);
+    this.router.navigate(['update', id
+  ])
+    setTimeout(()=>{
+      window.location.reload();
+    } , 100);
+    
   }
   filterChange:string = "" // This line is for Searching and Flitering the Data
 }
