@@ -40,7 +40,8 @@ employees: any[] | undefined
     setTimeout(()=>{
       window.location.reload();
     } , 100);
-    
+
   }
-  filterChange:string = "" // This line is for Searching and Flitering the Data
+  filterChange:string = ""
+  filerChange: string = "" // This line is for Searching and Flitering the Data
 }
