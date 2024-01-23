@@ -1,7 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators , FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators , FormBuilder, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
+
+
+// NRC Validator Checking Function 
+function nrcValidator(control: AbstractControl) : ValidationErrors | null {
+
+  // Define the NRC Number Pattern
+  const nrcPattern = /^[0-9]{1,14}\/[a-zA-Z]{2}[a-zA-Z]{2}[a-zA-Z]{2}\([NTRD]\)[0-9]{6}$/;
+
+  // Check if the Value matches the pattern :3
+  return nrcPattern.test(control.value)? null : {invalidNrc:true};
+}
 
 @Component({
   selector: 'app-adduser',
@@ -15,7 +26,7 @@ export class AddEmployeeComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl('', Validators.required ),
     email: new FormControl('', [Validators.required , Validators.email] ),
-    nrc: new FormControl('', Validators.required  ),
+    nrc: new FormControl('', [Validators.required , nrcValidator] ),
     interest: new FormControl('',)
   })
   ngOnInit(): void {

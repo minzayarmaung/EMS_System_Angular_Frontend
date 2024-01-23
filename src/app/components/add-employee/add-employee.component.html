@@ -62,6 +62,12 @@
             <div class="col-md-12 form-group mb-3">
               <label for="nrc" class="form-label">NRC Number</label>
               <input id="nrc" type="nrc_number" formControlName="nrc" name="NRC Number" class="form-control" placeholder="NRC Number" required>
+           
+              <!-- This part is responsible for checking Valid or not for NRC Number Type : Myanmar : -->
+              <div *ngIf="form.get('nrc')?.hasError('invalidNrc') && form.get('nrc')?.touched" class="text-danger">
+                Please Enter a Valid Myanmar NRC Number (e.g; 12/AaBbCc(N)123456). 
+            </div>
+            
             </div>
           </div>
 
