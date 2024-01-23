@@ -49,6 +49,11 @@
             <div class="col-md-12 form-group mb-3">
               <label for="email" class="form-label">Email</label>
               <input id="email" type="email" formControlName="email" name="email" class="form-control" placeholder="Email" required>
+
+              <!-- This is responsible for showing the Error message while the user inputs the incorrect format -->
+              <div *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched" class="text-danger">
+                Please enter a valid email address.
+              </div>
             </div>
           </div>
 

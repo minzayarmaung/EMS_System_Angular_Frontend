@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators , FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 
@@ -14,9 +14,9 @@ export class AddEmployeeComponent implements OnInit {
   
   form = new FormGroup({
     name: new FormControl('', Validators.required ),
-    email: new FormControl('', Validators.required ),
-    nrc: new FormControl('', Validators.required ),
-    interest: new FormControl('',  )
+    email: new FormControl('', [Validators.required , Validators.email] ),
+    nrc: new FormControl('', Validators.required  ),
+    interest: new FormControl('',)
   })
   ngOnInit(): void {
   }
