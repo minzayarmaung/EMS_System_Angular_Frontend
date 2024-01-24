@@ -14,6 +14,15 @@ function nrcValidator(control: AbstractControl) : ValidationErrors | null {
   return nrcPattern.test(control.value)? null : {invalidNrc:true};
 }
 
+// Email Validator Checking Function
+function emailValidator(control: AbstractControl) : ValidationErrors | null {
+  // Define the Email Pattern
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  // Check if the value matches the Pattern
+  return emailPattern.test(control.value)? null : {invalidEmail:true};
+}
+
 @Component({
   selector: 'app-adduser',
   templateUrl: './add-employee.component.html',
@@ -25,7 +34,7 @@ export class AddEmployeeComponent implements OnInit {
   
   form = new FormGroup({
     name: new FormControl('', Validators.required ),
-    email: new FormControl('', [Validators.required , Validators.email] ),
+    email: new FormControl('', [Validators.required , emailValidator] ),
     nrc: new FormControl('', [Validators.required , nrcValidator] ),
     interest: new FormControl('',)
   })
