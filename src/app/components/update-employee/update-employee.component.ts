@@ -1,8 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, NgForm, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 import { Employee } from 'src/app/Employee';
+
+// NRC Validator Checking Function 
+function nrcValidator(control: AbstractControl) : ValidationErrors | null {
+   
+  // Define the NRC Number Pattern
+  const nrcPattern = /^[0-9]{1,14}\/[a-zA-Z]{2}[a-zA-Z]{2}[a-zA-Z]{2}\([NTRD]\)[0-9]{6}$/;
+
+  // Check if the Value matches the pattern :3
+  return nrcPattern.test(control.value)? null : {invalidNrc:true};
+}
+
+// Email Validator Checking Function
+function emailValidator(control: AbstractControl) : ValidationErrors | null {
+  // Define the Email Pattern
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  // Check if the value matches the Pattern
+  return emailPattern.test(control.value)? null : {invalidEmail:true};
+}
 
 @Component({
   selector: 'app-updateuser',
@@ -26,8 +45,8 @@ export class UpdateEmployeeComponent implements OnInit {
   }
 
   form = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    nrc: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required , emailValidator]),
+    nrc: new FormControl('', [Validators.required , nrcValidator]),
     interest: new FormControl('', [Validators.required])
   })
 
